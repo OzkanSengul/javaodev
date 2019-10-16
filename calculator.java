@@ -5,36 +5,99 @@ public static void main(String[] args) {
 Scanner k= new Scanner (System.in);
 System.out.println("Hesaplamami istedigin ifadeyi giriniz");
 String Girdi=k.nextLine();
-int num1=0;
-/*int carpma =0;
-int bolme =0;
-int mod = 0;
-int toplama=0;
-int cikarma=0;
+	
+int toplama=(int) '+';
+int cikarma=(int) '-';
+int carpma =(int) '*';
+int bolme =(int) '/';
+int mod = (int) '%';
+int solparantez=(int) '(';
+int sagparantez=(int) ')';
 int num1=0;
 int num2=0;
 int ascii = (int) '0';
-	carpma = (int) Girdi.indexOf('*');
-	bolme = (int) Girdi.indexOf('/');
-	mod = (int) Girdi.indexOf('%');
-	toplama = (int) Girdi.indexOf('+');
-	cikarma = (int) Girdi.indexOf('-');
-	acma =(int)	Girdi.indexof('(');
-	kapama=(int)Girdi.indexof(')');
+//System.out.println(toplama );
+//System.out.println(cikarma );
+//System.out.println(carpma);
+//System.out.println(bolme);
+//System.out.println(mod);
+//System.out.println(solparantez);
+//System.out.println(sagparantez);
+//System.out.println(ascii);
+
+
+//int tmp=0
+//	carpma = (int) Girdi.indexOf('*');
+//	bolme = (int) Girdi.indexOf('/');
+//	mod = (int) Girdi.indexOf('%');
+//	toplama = (int) Girdi.indexOf('+');
+//	cikarma = (int) Girdi.indexOf('-');
+//	acma =(int)	Girdi.indexof('(');
+//	kapama=(int)Girdi.indexof(')');*/
 
 	for (int i=0;i<Girdi.length();i++ ){
-		Girdi.substring(Girdi.indexOf('*')*/
+		//System.out.println((int)Girdi.charAt(i));
+		//System.out.println(Girdi.substring(i+2,i+3));
+
+		if ((int)Girdi.charAt(i) == solparantez && Girdi.indexOf('+')==i+2){
+
+			//System.out.println(Girdi.substring(i+2,i+3));
+
+			System.out.println(((int)Girdi.charAt(i+1)+(int)Girdi.charAt(i+3))-2*ascii);}
+
+	else if ((int)Girdi.charAt(i) == solparantez && Girdi.indexOf('-')==i+2){
+
+			System.out.println(((int)Girdi.charAt(i+1)-ascii)-((int)Girdi.charAt(i+3)-ascii));
+			System.out.println(Girdi.charAt(i+1));
+			System.out.println(Girdi.charAt(i+1));
+
+			}
+				
+
+		//	System.out.println(Girdi.substring(i,i+1));
+				
+	
+		//int b=(int) Girdi.charAt(i);
+			
+				 		
+				 
 
 
+
+//				  else if ((int)Girdi.charAt(i) == solparantez&&Girdi.charAt(i+2)=='-')
+				// System.out.println((int)Girdi.charAt(i+1));
+				 //System.out.println((int)Girdi.charAt(i+3));
+//				 	System.out.println((int)Girdi.charAt(i+1)-ascii - (int)Girdi.charAt(i+2)-ascii);
+				 	//System.out.println((int)Girdi.charAt(i+2));
+
+
+
+				//System.out.println(d+f);//Girdi.indexof(i)
+
+
+
+		}
+
+		//Girdi.substring(Girdi.indexOf('*');
+	//int ascii = (int) '0';
+	//int b;
+    //calculate without sign
+	//char c = Girdi.charAt(i);
+		//	if (c==(int)'-'){
+		//		for(int j=0;j<i;j++ ){
+		//		b=(int)Girdi.charAt(i);
+		//		int sag
+
+
+}
 		
-		int i = 0;
-        while (i < Girdi.length()) { // calculate without sign
-            char c = Girdi.charAt(i);
-            if (c >= '0' && c <= '9') {
-                num1 = num1 * 10 + (c - '0');
-            } else break; // break when not a digit
-			i++;
-		System.out.println(num1);	
+	//	}
+		//System.out.println(b-ascii);
+            //if (c >= '0' && c <= '9') {
+              //  num1 = num1 * 10 + (c - '0');
+           // } else break; // break when not a digit
+			//i++;
+		//System.out.println(num1);	
 
 		//char a =Girdi.charAt(i);
 	
@@ -78,7 +141,7 @@ int ascii = (int) '0';
 
 
 
-	} }
+	 
 
 	//System.out.println( carpma ); 
 	//System.out.println( bolme );
