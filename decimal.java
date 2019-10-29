@@ -12,6 +12,7 @@ public class Decimal {
 		
 		int length = 0;
 		
+		
 		if (this.s.length() > d2.s.length()) {
 			length = this.s.length();
 		}
@@ -63,7 +64,7 @@ public class Decimal {
 	        this.s = d2.s; 
 	        d2.s = t; 
 			flag=1;
-		}else if (this.s.length() > d2.s.length()) {
+		}else if (this.s.length() >= d2.s.length()) {
 			length = this.s.length();
 			
 		}else {
@@ -80,7 +81,8 @@ public class Decimal {
 		for(int i=1;i <= length;i++) {
 			int s1 = 0;
 			int s2 = 0;
-			if(this.s.length()-i >= 0) {
+			this.s=resultString;
+			if(this.s.length()-i > 0) {
 				s1=this.s.charAt(this.s.length()-i)-'0';
 			}
 			if(d2.s.length()-i >= 0) {
@@ -117,21 +119,19 @@ return result;}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	public Decimal multiply(Decimal d2) {
 		
 		String resultString ="";
-		//String resultString1="";
+		
+		Decimal result22 = new Decimal("");
 		
 		int len1 = this.s.length(); 
 	    int len2 = d2.s.length(); 
+	    
+	    
+	   
+		String sifir="";
+		
 	    
 		if (len1 == 0 || len2 == 0) { 
 			
@@ -155,12 +155,15 @@ return result;}
 		else {
 			length = len2;
 		}
-		if (len1>len2) {
+		if (len1>=len2) {
 			int s1 = 0;
 			int s2 = 0;
 			
-			String resultString1="";
-			String sifir="";
+			
+			
+			Decimal result1=new Decimal ("");
+			
+			
 			
 			for(int i=1;i <= len2;i++) {
 				
@@ -168,7 +171,8 @@ return result;}
 				
 				for (int j = 1; j <= len1; j++) {
 					
-					if(this.s.length()-j >= 0) {
+					
+					if(this.s.length()-i >= 0) {
 						s1=this.s.charAt(this.s.length()-j)-'0';
 						}
 					
@@ -179,27 +183,85 @@ return result;}
 					int carpma=s1*s2+elde;
 					elde=carpma/10;
 					
-				//	for (int k = 0; k < j; k++) {
-						
-					//}
+			
 					resultString0 = carpma%10 + resultString0;
-					}
 					
 				
 				
-				resultString1 = resultString0 +sifir;
-				sifir=sifir+"0";
-
+				}
+					
 				
-					}
+				
+				resultString0 = resultString0 +sifir;
+				
+				
+				sifir=sifir+"0";
+				
+				
+				result1.s=resultString0;
+				
+				result22=result22.add(result1);
+				
+				
+			}
 			
-					}
+				
+			
+			
+			
+			}
 		
-Decimal result = new Decimal(resultString);
 		
-		return result;}
+		return result22;}
 
+
+
+
+public Decimal divide (Decimal d2) {
+	
+
+	int length = 0;
+	int count=0;
+	boolean kontrol=true;
+	String resultString ="";
+	
+	while ((this.s.length()>d2.s.length()) && kontrol) {
+		
+		Decimal bolunen = new Decimal(this.s);
+		Decimal bolen=new Decimal(d2.s);
+		Decimal result=new Decimal ((bolunen.subtract(bolen)).s);
+		
+		
+		this.s=result.s;
+		length=this.s.length();
+		count++;
+		if(length>d2.s.length()&& (this.s.charAt(d2.s.length())>=d2.s.charAt(0))   ) {
+			
+		kontrol=true;	
+		}
+		else if(length==d2.s.length() && this.s.charAt(0)>=d2.s.charAt(0)) {
+		
+		}else {
+			kontrol=false;
+		}
+		
+	
+	
+	
+	}
+	
+Decimal count1 =new Decimal (resultString);	
+return count1;}
+	
+	
 }
+
+
+
+
+
+
+
 
 			
 
