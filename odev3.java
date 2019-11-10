@@ -135,30 +135,51 @@ public class Multiset {
 	}
 
 	public static void subsetSum(int[] A, int K) {
-		A=toSet(siralama(A));
-		int i=0;
-		int j=0;
-		while (j<A.length) {
-			if (A[i]+A[i+1]==K) {
-				System.out.println(A[i]+" "+A[i+1]);
-				
-			}else if (A[i]+A[i+1]<K) {
-				if (A[i]+A[i+1]+A[i+2]==K) {
-					
-					
-					
+
+		A = toSet(siralama(A));
+		int i = 0;
+		int j = 0;
+		int sum = 0;
+		while (sum != K) {
+			for (i = 0; i < A.length; i++) {
+				for (j = 1; j < A.length - 1; j++) {
+
+					if (A[i] == K) {
+						System.out.println(A[i]);
+					}
+					sum = A[i] + A[j];
+
+					if (sum == K) {
+
+						System.out.println(A[i] + " " + A[j]);
+						j++;
+
+					} else if (sum < K) {
+						j++;
+						sum = sum + A[j];
+						if (sum == K) {
+							for (int l = 0; l < j + 1; l++) {
+								System.out.print(A[l] + " ");
+							}
+
+							j++;
+
+						}
+
+					}
+
 				}
 			}
-			
-			
+
+			break;
 		}
-}
-	
+	}
+
 	public static void main(String[] args) {
 		int[] A = { 6, 5, 4, 3, 2, 2, 1 };
-		int[] B = { 15,14,15,12,2,2,1,1 };
-		Multiset.display(Multiset.toSet(B));
-		;
+		int[] B = { 1, 2, 4, 6, 5, 3, 3, 2, 1 };
+		Multiset.subsetSum(B, 6);
+
 	}
 
 }
