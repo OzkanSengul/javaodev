@@ -1,7 +1,8 @@
 package odev3;
 
-public class Multiset {
+package TOBB;
 
+public class Multiset {
 	private static int[] siralama(int[] A) {
 
 		int uzunluk = A.length;
@@ -43,9 +44,6 @@ public class Multiset {
 	}
 
 	public static int[] intersection(int[] A, int[] B) {
-
-		// int [] C=new int[Math.min(A.length,B.length)];
-
 		A = siralama(A);
 		B = siralama(B);
 
@@ -65,7 +63,6 @@ public class Multiset {
 
 			} else {
 
-				// System.out.print(B[j]+" ");
 				temp[count] = B[j];
 				j++;
 
@@ -88,7 +85,7 @@ public class Multiset {
 	}
 
 	public static int[] toSet(int[] A) {
-		// int i = 0;
+
 		int j = 0;
 		int m = 0;
 		int[] temp = new int[A.length];
@@ -103,7 +100,7 @@ public class Multiset {
 			}
 			if (count >= 1 && count < 2) {
 				temp[m] = A[j];
-				// count=0;
+
 				m++;
 			}
 			if (A[j] != A[j + 1]) {
@@ -134,41 +131,56 @@ public class Multiset {
 
 	}
 
-	public static void subsetSum(int[] A, int K) {
+	public static void subsetSum(int[] Z, int K) {
 
-		A = toSet(siralama(A));
+		Z = toSet(siralama(Z));
 		int i = 0;
 		int j = 0;
-		int sum = 0;
-		while (sum != K) {
-			for (i = 0; i < A.length; i++) {
-				for (j = 1; j < A.length - 1; j++) {
 
-					if (A[i] == K) {
-						System.out.println(A[i]);
-					}
-					sum = A[i] + A[j];
+		int n;
+		int sum = 0;
+
+		while (sum != K) {
+
+			for (i = 0; i < Z.length; i++) {
+
+				if (Z[i] == K) {
+					System.out.println(Z[i]);
+				}
+
+				for (j = 0; j < Z.length - 1; j++) {
+					sum = Z[i];
+
+					sum = sum + Z[j];
 
 					if (sum == K) {
 
-						System.out.println(A[i] + " " + A[j]);
-						j++;
+						System.out.println(Z[i] + " " + Z[j]);
 
-					} else if (sum < K) {
+					} else if (sum < K && Z[i] != Z[j] && Z[i] != Z[j + 1]) {
+						n = j;
 						j++;
-						sum = sum + A[j];
-						if (sum == K) {
-							for (int l = 0; l < j + 1; l++) {
-								System.out.print(A[l] + " ");
+						int temp = sum;
+
+						for (int k = j; k < Z.length - 1; k++) {
+							sum = temp;
+
+							sum = sum + Z[k];
+
+							if (sum == K && Z[i] != Z[k]) {
+
+								String check = "";
+								System.out.println(Z[i] + " " + (sum - (Z[i] + Z[k])) + " " + Z[k]);
+
 							}
 
-							j++;
-
 						}
-
+						j = n;
 					}
 
 				}
+				j++;
+
 			}
 
 			break;
@@ -177,8 +189,8 @@ public class Multiset {
 
 	public static void main(String[] args) {
 		int[] A = { 6, 5, 4, 3, 2, 2, 1 };
-		int[] B = { 1, 2, 4, 6, 5, 3, 3, 2, 1 };
-		Multiset.subsetSum(B, 6);
+		int[] B = { 17, 15, 14, 15, 12, 2, 2, 1, 1 };
+		Multiset.subsetSum(B, 17);
 
 	}
 
