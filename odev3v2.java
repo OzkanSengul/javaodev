@@ -129,78 +129,19 @@ public class Multiset {
 
 	}
 
-	public static void subsetSum(int[] A, int K) {
-		int[] Z = new int[A.length];
-		Z = toSet(siralama(A));
+	public static void subsetSum(int[] Z, int K) {
+
+		Z = toSet(siralama(Z));
 		int i = 0;
 		int j = 0;
 		int [] count=new int [20];
 		int n;
 		int sum = 0;
 		int count2=0;
+		while (sum != K) {
+			
 		
-			
-		for (int z = 0; z < 2; z++) {
-			
-			count2=0;
-			if (z==1) {
-				i=1;
-				
-				if (count[i] == K) {
-					System.out.println(count[i]);
-					
-					count[count2]=count[i];
-					count2++;
-				}
-
-				for (j = 0; j < count.length - 1; j++) {
-					sum = count[i];
-
-					sum = sum + count[j];
-
-					if (sum == K) {
-						
-						count[count2]=count[i];
-						count2++;
-						count[count2]=count[j];
-						count2++;
-						System.out.println(count[i] + " " + count[j]);
-
-					} else if (sum < K && count[i] != count[j] && count[i] != count[j + 1]) {
-						n = j;
-						j++;
-						int temp = sum;
-
-						for (int k = j; k < count.length - 1; k++) {
-							sum = temp;
-
-							sum = sum + count[k];
-
-							if (sum == K && count[i] != count[k]) {
-								
-								String check = "";
-								System.out.println(count[i] + " " + (sum - (count[i] + count[k])) + " " + count[k]);
-								count[count2]=count[i];
-								count2++;
-								count[count2]=(sum - (count[i] + count[k]));
-								count2++;
-								count[count2]=count[k];
-								count2++;
-							}
-
-						}
-						j = n;
-					}
-
-				}
-				j++;
-
-			
-				 
-				
-			}
-		
-			for (i = 0; i < Z.length-1; i++) {
+			for (i = 0; i < Z.length; i++) {
 				
 				if (Z[i] == K) {
 					System.out.println(Z[i]);
@@ -210,9 +151,9 @@ public class Multiset {
 				}
 
 				for (j = 0; j < Z.length - 1; j++) {
-					sum = Z[j];
+					sum = Z[i];
 
-					
+					sum = sum + Z[j];
 
 					if (sum == K) {
 						
@@ -232,17 +173,16 @@ public class Multiset {
 
 							sum = sum + Z[k];
 
-							if (sum == K ) {
+							if (sum == K) {
 								
 								String check = "";
-								System.out.println(temp + " "  + Z[k]);
-								count[count2]=temp;
+								System.out.println(Z[i] + " " + (sum - (Z[i] + Z[k])) + " " + Z[k]);
+								count[count2]=Z[i];
+								count2++;
+								count[count2]=(sum - (Z[i] + Z[k]));
 								count2++;
 								count[count2]=Z[k];
 								count2++;
-								count[count2]=Z[k];
-								count2++;
-								
 							}
 
 						}
@@ -251,19 +191,13 @@ public class Multiset {
 
 				}
 				j++;
-				
-				}
-			
-			
-			
-		} 
-		count=(toSet(count));
+
+			}
+
+			break;
+		} count=(toSet(count));
 		
-	
-		for (int h = 0; h < count.length; h++) {
-			System.out.print(count[h]);
-			
-		}
+		
 	}
 
 	public static void main(String[] args) {
