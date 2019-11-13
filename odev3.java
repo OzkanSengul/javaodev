@@ -1,7 +1,5 @@
 package odev3;
 
-package TOBB;
-
 public class Multiset {
 	private static int[] siralama(int[] A) {
 
@@ -93,35 +91,27 @@ public class Multiset {
 		A = siralama(A);
 
 		for (j = 0; j < A.length - 1; j++) {
-			if (A[j] == A[j + 1]) {
+			j = m;
+			for (int i = j + 1; i < A.length; i++) {
 
-				count++;
+				if (A[j] != A[i]) {
+					m = i;
+					temp[count] = A[m - 1];
+					count++;
+					break;
+				}
 
 			}
-			if (count >= 1 && count < 2) {
-				temp[m] = A[j];
-
-				m++;
-			}
-			if (A[j] != A[j + 1]) {
-				temp[m] = A[j + 1];
-				m++;
-			}
+		}
+		temp[count] = A[A.length - 1];
+		int[] temp2 = new int[count + 1];
+		for (int z = 0; z < count; z++) {
+			temp2[z] = temp[z];
 
 		}
+		temp2[count] = temp[count];
 
-		if (temp[0] == temp[1])
-			m = m - 1;
-		int[] C = new int[m];
-		for (int k = 0; k < m; k++) {
-			if (temp[0] == temp[1]) {
-				C[k] = temp[k + 1];
-			} else
-				C[k] = temp[k];
-
-		}
-
-		return C;
+		return temp2;
 	}
 
 	public static void display(int[] A) {
@@ -133,19 +123,22 @@ public class Multiset {
 
 	public static void subsetSum(int[] Z, int K) {
 
-		Z = toSet(siralama(Z));
+		Z = toSet(Z);
 		int i = 0;
 		int j = 0;
-
+		int[] count = new int[20];
 		int n;
 		int sum = 0;
-
+		int count2 = 0;
 		while (sum != K) {
 
 			for (i = 0; i < Z.length; i++) {
 
 				if (Z[i] == K) {
 					System.out.println(Z[i]);
+
+					count[count2] = Z[i];
+					count2++;
 				}
 
 				for (j = 0; j < Z.length - 1; j++) {
@@ -155,9 +148,13 @@ public class Multiset {
 
 					if (sum == K) {
 
+						count[count2] = Z[i];
+						count2++;
+						count[count2] = Z[j];
+						count2++;
 						System.out.println(Z[i] + " " + Z[j]);
 
-					} else if (sum < K && Z[i] != Z[j] && Z[i] != Z[j + 1]) {
+					} else if (sum < K) {
 						n = j;
 						j++;
 						int temp = sum;
@@ -167,11 +164,16 @@ public class Multiset {
 
 							sum = sum + Z[k];
 
-							if (sum == K && Z[i] != Z[k]) {
+							if (sum == K) {
 
 								String check = "";
 								System.out.println(Z[i] + " " + (sum - (Z[i] + Z[k])) + " " + Z[k]);
-
+								count[count2] = Z[i];
+								count2++;
+								count[count2] = (sum - (Z[i] + Z[k]));
+								count2++;
+								count[count2] = Z[k];
+								count2++;
 							}
 
 						}
@@ -185,12 +187,14 @@ public class Multiset {
 
 			break;
 		}
+		count = (toSet(count));
+
 	}
 
 	public static void main(String[] args) {
 		int[] A = { 6, 5, 4, 3, 2, 2, 1 };
-		int[] B = { 17, 15, 14, 15, 12, 2, 2, 1, 1 };
-		Multiset.subsetSum(B, 17);
+		int[] B = { 15, 14, 15, 12, 2, 2, 1, 1 };
+		Multiset.display(toSet(B));
 
 	}
 
