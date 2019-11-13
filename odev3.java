@@ -91,9 +91,13 @@ public class Multiset {
 		A = siralama(A);
 
 		for (j = 0; j < A.length - 1; j++) {
+			if( A.length/2<=count+m && A[m]==A[A.length-1]) {
+			temp[count] = A[m];
+			break;
+			}
 			j = m;
-			for (int i = j + 1; i < A.length; i++) {
-
+			for (int i = j + 1; i < A.length-1; i++) {
+				
 				if (A[j] != A[i]) {
 					m = i;
 					temp[count] = A[m - 1];
@@ -193,7 +197,7 @@ public class Multiset {
 
 	public static void main(String[] args) {
 		int[] A = { 6, 5, 4, 3, 2, 2, 1 };
-		int[] B = { 15, 14, 15, 12, 2, 2, 1, 1 };
+		int[] B = {15,15,15,14, 15, 12, 2, 2, 1, 1 };
 		Multiset.display(toSet(B));
 
 	}
