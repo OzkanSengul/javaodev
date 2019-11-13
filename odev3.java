@@ -96,7 +96,7 @@ public class Multiset {
 			break;
 			}
 			j = m;
-			for (int i = j + 1; i < A.length-1; i++) {
+			for (int i = j+1; i < A.length; i++) {
 				
 				if (A[j] != A[i]) {
 					m = i;
@@ -197,7 +197,7 @@ public class Multiset {
 
 	public static void main(String[] args) {
 		int[] A = { 6, 5, 4, 3, 2, 2, 1 };
-		int[] B = {15,15,15,14, 15, 12, 2, 2, 1, 1 };
+		int[] B = {6,6,6,6,6, 5, 4,4,4, 3, 2, 2, 1};
 		Multiset.display(toSet(B));
 
 	}
