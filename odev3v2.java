@@ -205,10 +205,12 @@ public class Multiset {
 
 	}
 
+	public static void
+	
 	public static void main(String[] args) {
 		int[] A = { 15, 14, 14, 15, 12, 2, 2, 1, 1 };
 		int[] B = { 431, 4, 1, 2, 2, 14, 14, 45, 22, 22, 4 };
-		Multiset.display(toSet(B));
+		Multiset.display(toSet(A));
 
 	}
 
